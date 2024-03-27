@@ -24,8 +24,9 @@ export default function FormLogin() {
             
             <div className="div_campo">
               <Campo classNameInput="form_input" classNameLabel="form_label" htmlFor="password" name="CONTRASEÑA" type="password" register={register}/>            
-            </div>            
-            {errors.password && <span className="form_error">Contraseña no ingresada</span>}
+              {errors.password && <span className="form_error">Contraseña no ingresada</span>}  
+          </div>            
+            
             
             <div className="div_campo-2">
               <Campo classNameInput="form_check" classNameLabel="form_check" htmlFor="recordar" name="Recordarme" type="checkbox" register={register}/>    
