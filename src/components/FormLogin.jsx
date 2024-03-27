@@ -1,7 +1,7 @@
 import Form from "./Form/Form"
 import Campo from "./Campo/Campo"
 import Button from "./Button/Button"
-import '../styles/form.css'
+import '../styles/normalize.css'
 import '../App.css'
 import '../styles/form.css'
 import {useForm} from 'react-hook-form'
