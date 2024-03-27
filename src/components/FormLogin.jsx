@@ -1,6 +1,6 @@
-import Form from "./Form/Form";
-import Campo from "./Campo/Campo";
-import Button from "./Button/Button";
+import Form from "./Form/Form"
+import Campo from "./Campo/Campo"
+import Button from "./Button/Button"
 import '../styles/form.css'
 import '../App.css'
 import '../styles/form.css'
