@@ -19,12 +19,12 @@ export default function FormLogin() {
           <Form onSubmit = {onSubmit}>
             <div className="div_campo">
             <Campo classNameInput="form_input" classNameLabel="form_label-id" htmlFor="id" name="NOMBRE DE CUENTA" type="text" register={register} />
-            {errors.id && <span className="form_error">Nombre de usuario no ingresado</span>}
+            {errors.id && <span className="form_error">{errors.id.message}</span>}
             </div>
             
             <div className="div_campo">
               <Campo classNameInput="form_input" classNameLabel="form_label" htmlFor="password" name="CONTRASEÑA" type="password" register={register}/>            
-              {errors.password && <span className="form_error">Contraseña no ingresada</span>}  
+            {errors.password && <span className="form_error">{errors.password.message}</span>}  
           </div>            
             
             
