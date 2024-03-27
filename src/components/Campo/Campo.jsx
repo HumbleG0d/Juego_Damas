@@ -5,7 +5,7 @@ export default function Campo({ classNameLabel, classNameInput, htmlFor, name, t
         <>
             <label className = {classNameLabel} htmlFor = {htmlFor} >{name}</label>
             <input className={classNameInput} type={type} id={htmlFor} {...register(htmlFor, {
-                required: {value: boolean, message: `El campo ${name} es obligatorio`}
+                required: {value: boolean, message: `${name.toLowerCase()} es requerido`}
             })} />
         </>
     
