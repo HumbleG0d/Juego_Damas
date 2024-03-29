@@ -1,0 +1,38 @@
+.img{
+    width: 80px;
+    height: 80px;
+}
+
+a{
+    text-decoration: none;
+    color: #5D5C5C;
+    font-weight: bold;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 90%;
+    height: 10vh;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 50px;
+    width: 50%;
+}
+
