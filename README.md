@@ -37,4 +37,4 @@ Este proyecto está bajo la Licencia [Tipo de licencia]. Para más detalles, ver
 Si tienes alguna pregunta o sugerencia, por favor contáctanos en [correo electrónico] o abre un issue en este repositorio.
 
 ## Diseño
-![Foto de inicion de sesión ](./src/assets/primer-login.png)
+![Foto de inicion de sesión ](./src/assets/PaginaWeb.png)
