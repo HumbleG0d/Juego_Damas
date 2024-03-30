@@ -35,6 +35,10 @@ img{
     outline: none;
 }
 
+.section_button:hover{
+    background-color: #333333;
+}
+
 .div_section{
     height: 100%;
     display : grid;
