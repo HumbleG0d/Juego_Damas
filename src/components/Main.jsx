@@ -1,5 +1,4 @@
 import '../styles/main.css'
-import '../model/styles.css'
 import Button from './Button/Button'
 import Checkerboard from './ModelViewer/Checkerboard'
 export default function Main() { 
