@@ -9,8 +9,8 @@ export default function Nav() {
             <nav className="navbar">
             <ul className="links">
                     <li className="link"><a href="">Home</a></li>
-                    <li className="link"><a href="">Playing</a></li>
-                    <li className="link"><a href="">Info</a></li>
+                    <li className="link"><a href="">Instructions</a></li>
+                    <li className="link"><a href="">Ranking</a></li>
             </ul>
         </nav>
 
