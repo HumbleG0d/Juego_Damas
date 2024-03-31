@@ -1,24 +1,23 @@
 import Form from "./Form/Form"
 import Campo from "./Campo/Campo"
 import Button from "./Button/Button"
-import '../styles/normalize.css'
-import '../styles/form.css'
-import { useForm } from 'react-hook-form'
-import { FcGoogle } from "react-icons/fc";
-import { AiFillGithub } from "react-icons/ai";
+import "../styles/normalize.css"
+import "../styles/form.css"
+import { useForm } from "react-hook-form"
+import { FcGoogle } from "react-icons/fc"
+import { AiFillGithub } from "react-icons/ai"
 
-export default function FormLogin() {
+export default function FormLogin () {
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const { register, handleSubmit , formState:{errors} } = useForm()
-  
   const onSubmit = handleSubmit((data) => {
     console.log(data)
   })
 
-    return (
-      <div className="form-container">
+  return (
+      <div className="div_form form-container">
       <p className="title">Login</p>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} className={"form"}>
         <div className="input-group">
           <Campo
             classNameLabel="form_label"
@@ -40,7 +39,7 @@ export default function FormLogin() {
               type="password"
               register={register}
             />
-            {errors.password && <span className="form_error">{errors.password.message}</span>}  
+            {errors.password && <span className="form_error">{errors.password.message}</span>}
 
           <div className="forgot">
             <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
@@ -61,9 +60,9 @@ export default function FormLogin() {
               <AiFillGithub />
             </Button>
           </div>
-      <p className="signup">{`Don't have an account?`}
+      <p className="signup">{"Don't have an account?"}
         <a rel="noopener noreferrer" href="#" className="">Sign up</a>
       </p>
     </div>
-    );
+  )
 }
