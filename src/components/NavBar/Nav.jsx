@@ -11,7 +11,6 @@ export default function Nav() {
                     <li className="link"><a href="">Home</a></li>
                     <li className="link"><a href="">Playing</a></li>
                     <li className="link"><a href="">Info</a></li>
-                    <li className="link"><a href="">Register</a></li>
             </ul>
         </nav>
 
