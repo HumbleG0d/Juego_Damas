@@ -1,16 +1,16 @@
 import '../styles/main.css'
 import Button from './Button/Button'
 import Checkerboard from './ModelViewer/Checkerboard'
-import FormLogin from './FormLogin'
 import { useState} from 'react'
+import { Link , Outlet} from 'react-router-dom'
 export default function Main() { 
     const [showLoginForm, setShowLoginForm] = useState(false)
 
     const [opacity, setOpacity] = useState(false)
 
     const handleBecomeMasterClick = () => { 
-        setShowLoginForm(true)
         setOpacity(true)
+        setShowLoginForm(true)
     }
 
     if (opacity) {
@@ -25,7 +25,9 @@ export default function Main() {
                     <h1>TAKE YOUR CHECKERS GAME TO THE NEXT LEVEL</h1>
                     <p>Connet with top ranked chess players from around the world and learn the secrets to becoming a checkers master.</p>
                     <div className='div_button'>
-                    <Button classNameButon='section_button' onClick ={handleBecomeMasterClick} >Become A Master</Button>
+                        <Link to='/login' >
+                        <Button classNameButon='section_button' onClick ={handleBecomeMasterClick} >Become A Master</Button>
+                    </Link>
                     </div>
                 </div>
 
@@ -35,7 +37,7 @@ export default function Main() {
                     </div>
                 </div>
             </div>
-            {showLoginForm && <FormLogin />}
+            {showLoginForm && <Outlet />}
         </section>
     )
 }
