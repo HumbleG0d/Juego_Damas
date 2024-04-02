@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function Nav() { 
     return (
         <header className="header">
@@ -8,9 +9,9 @@ export default function Nav() {
             </div>
             <nav className="navbar">
             <ul className="links">
-                    <li className="link"><a href="">Home</a></li>
-                    <li className="link"><a href="">Instructions</a></li>
-                    <li className="link"><a href="">Ranking</a></li>
+                    <li className="link"><Link to="/">Home</Link></li>
+                    <li className="link"><Link to="/instructions">Instructions</Link></li>
+                    <li className="link"><Link to="/ranking">Ranking</Link></li>
             </ul>
         </nav>
 
