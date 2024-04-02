@@ -96,8 +96,6 @@ function Checkerboard() {
         animate();
 
         return () => {
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-            containerRef.current.removeChild(renderer.domElement);
             trackballControls.dispose();
         };
     }, []);
