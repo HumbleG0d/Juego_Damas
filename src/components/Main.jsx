@@ -14,12 +14,12 @@ export default function Main() {
     }
 
     if (opacity) {
-        document.body.style.backgroundColor = '#404040'
-        document.body.style.backdropFilter = 'blur(15px)'
-    }
+       document.body.style.backgroundColor = '#404040'
+       document.body.style.backdropFilter = 'blur(15px)'
+   }
 
     return (
-        <section className='section_main'>
+        <section className= "section_main">
             <div className='div_section'>
                 <div className='div_section-info'>
                     <h1>TAKE YOUR CHECKERS GAME TO THE NEXT LEVEL</h1>
@@ -37,7 +37,7 @@ export default function Main() {
                     </div>
                 </div>
             </div>
-            {showLoginForm && <Outlet />}
+            {showLoginForm && <Outlet/>}
         </section>
     )
 }
