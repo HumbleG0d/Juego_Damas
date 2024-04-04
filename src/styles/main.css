@@ -29,6 +29,7 @@ img {
   border-radius: 15px;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.674);
   padding: 15px;
+  cursor: pointer;
 }
 
 .section_button:focus {
