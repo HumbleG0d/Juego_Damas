@@ -6,6 +6,8 @@ import "../styles/form.css"
 import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { AiFillGithub } from "react-icons/ai"
+import { AiFillCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom"
 
 export default function FormLogin () {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -16,7 +18,12 @@ export default function FormLogin () {
 
   return (
       <div className="div_form form-container">
-      <p className="title">Login</p>
+      <Link to="/">
+        <AiFillCloseCircle className="close" />
+       
+        </Link>
+        <p className="title">Login</p>
+        
       <Form onSubmit={onSubmit} className={"form"}>
         <div className="input-group">
           <Campo
@@ -61,7 +68,7 @@ export default function FormLogin () {
             </Button>
           </div>
       <p className="signup">{"Don't have an account?"}
-        <a rel="noopener noreferrer" href="#" className="">Sign up</a>
+        <Link to= '/register'>Sign up</Link>
       </p>
     </div>
   )
