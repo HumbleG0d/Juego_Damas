@@ -140,6 +140,7 @@ h1 {
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .buttonSesion {
@@ -206,4 +207,21 @@ h1 {
   display: block;
   font-weight: bold;
   font-size: 12px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: #e7a874;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #da8c4d;
 }
