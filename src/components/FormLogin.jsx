@@ -9,15 +9,26 @@ import { AiFillGithub } from "react-icons/ai"
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link , Outlet , useNavigate } from "react-router-dom"
 
-export default function FormLogin () {
-  const { register, handleSubmit, formState: { errors } } = useForm()
+export default function FormLogin() {
+  const { register, formState: { errors }, watch , reset  , handleSubmit} = useForm({
+    defaultValues: {
+      username: "",
+      password: ""
+    }
+  })
 
   const navigate = useNavigate();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    navigate('/play')
-  })
+  const onLogin = handleSubmit(() => {
+    navigate('/play', {
+      replace: true,
+      state: {
+        logged: true,
+        username: watch('username')
+      },
+    })
+    reset()
+  }); // Add closing parenthesis here
 
   return (
     <>
@@ -28,7 +39,7 @@ export default function FormLogin () {
         </Link>
         <p className="title">Login</p>
         
-      <Form onSubmit={onSubmit} className="form">
+      <Form onSubmit={onLogin} className="form">
         <div className="input-group">
           <Campo
             classNameLabel="form_label"
