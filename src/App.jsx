@@ -22,8 +22,8 @@ export default function App() {
         </Route>
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/ranking" element={<Ranking />} />
-        <Route path="/play" element={<ProtecteRoute user={null}>
-          <Play /> /**Cambiar el null por los datos traidos del back */
+        <Route path="/play" element={<ProtecteRoute route = {"play"}> 
+          <Play />
         </ProtecteRoute>} />
       </Routes>
     </>
