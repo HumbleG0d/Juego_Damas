@@ -1,4 +1,27 @@
 package com.banckend.backend.configuracion;
 
-public class ConfiguracionDeCors {
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class ConfiguracionDeCors implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*") // Aun falta especificar la ruta del frontend, * : acepta todas las rutas
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
+                .allowCredentials(true) // se necesitaria credenciales para acceder a las rutas privadas
+                .maxAge(3600);
+
+        registry.addMapping("/auth/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
+                .allowCredentials(false) //No se necesitaria credenciales para acceder a las rutas publicas
+                .maxAge(3600);
+    }
 }
