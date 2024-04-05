@@ -7,24 +7,28 @@ import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { AiFillGithub } from "react-icons/ai"
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Link } from "react-router-dom"
+import { Link , Outlet , useNavigate } from "react-router-dom"
 
 export default function FormLogin () {
   const { register, handleSubmit, formState: { errors } } = useForm()
 
+  const navigate = useNavigate();
+
   const onSubmit = handleSubmit((data) => {
     console.log(data)
+    navigate('/play')
   })
 
   return (
-      <div className="div_form form-container">
+    <>
+    <div className="div_form form-container">
       <Link to="/">
         <AiFillCloseCircle className="close" />
        
         </Link>
         <p className="title">Login</p>
         
-      <Form onSubmit={onSubmit} className={"form"}>
+      <Form onSubmit={onSubmit} className="form">
         <div className="input-group">
           <Campo
             classNameLabel="form_label"
@@ -53,6 +57,7 @@ export default function FormLogin () {
           </div>
         </div>
         <Button classNameButon="sign">Sign in</Button>
+        
       </Form>
       <div className="social-message">
         <div className="line"></div>
@@ -71,5 +76,7 @@ export default function FormLogin () {
         <Link to= '/register'>Sign up</Link>
       </p>
     </div>
+    <Outlet/>
+    </>
   )
 }
