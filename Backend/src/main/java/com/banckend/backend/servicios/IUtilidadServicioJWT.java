@@ -10,7 +10,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.text.ParseException;
 
-@Service
 public interface IUtilidadServicioJWT {
 
     public String generateJWT(Long id_usuario) throws IOException, NoSuchAlgorithmException, InvalidKeyException, JOSEException, InvalidKeySpecException;

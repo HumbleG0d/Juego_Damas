@@ -8,6 +8,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -21,6 +22,7 @@ import java.text.ParseException;
 import java.util.Base64;
 import java.util.Date;
 
+@Service
 public class UtilidadServicioJWT implements IUtilidadServicioJWT {
 
     @Value("classpath:jwtKeys/private_key.pem")
