@@ -1,64 +1,122 @@
-.img{
-    width: 80px;
-    height: 80px;
+.img {
+  width: 80px;
+  height: 80px;
 }
 
-a{
-    text-decoration: none;
-    color: #5D5C5C;
-    font-weight: bold;
+a {
+  text-decoration: none;
+  color: #5d5c5c;
+  font-weight: bold;
 }
 
-a:hover{
-    color: #B3B3B3;
+a:hover {
+  color: #b3b3b3;
 }
 
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.div_header{
-    margin-left: 55px;
+.div_header {
+  margin-left: 55px;
 }
 
-.navbar{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 70%;
-    height: 10vh;
+.navbar {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 70%;
+  height: 10vh;
 }
 
-.links{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 50px;
-    width: 50%;
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 50px;
+  width: 50%;
 }
 
-.link{
-    position: relative;
+.link {
+  position: relative;
 }
 
-.link::after{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 4px;
-    background-color: #cea786;
-    display: block;
-    margin-top: 5px;
-    transition: width 0.3s;
+.link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px;
+  background-color: #cea786;
+  display: block;
+  margin-top: 5px;
+  transition: width 0.3s;
 }
 
-.link:hover::after{
-    width: 100%;
+.link:hover::after {
+  width: 100%;
+}
+
+.paste_button {
+  position: relative;
+  display: block;
+}
+
+.button_profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 188px;
+  height: 40px;
+  background-color: #181819;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8%;
+  padding: 25px 10px;
+}
+
+.button_profile:hover {
+  background-color: #2d2d2d;
+  transition: 0.3s background-color ease-out;
+}
+
+.img_profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 30%;
+  margin-left: 10px;
+}
+
+.button_username {
+  color: #f2f2f2;
+  font-weight: bold;
+}
+
+.dropdown {
+  position: absolute;
+  right: -10px;
+  top: 30px;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.dropdown_link {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.dropdown_link:hover {
+  background-color: #cc582a;
+  border-radius: 10px;
+  transition: 0.3s background-color ease-out;
 }
