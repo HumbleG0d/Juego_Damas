@@ -22,7 +22,7 @@ export default function App() {
         </Route>
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/ranking" element={<Ranking />} />
-        <Route path="/play" element={<ProtecteRoute route = {"play"}> 
+        <Route path="/play" element={<ProtecteRoute route = {" "}> 
           <Play />
         </ProtecteRoute>} />
       </Routes>
