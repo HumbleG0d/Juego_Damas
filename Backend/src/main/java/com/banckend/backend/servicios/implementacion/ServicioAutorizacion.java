@@ -22,7 +22,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     private RepositorioUsuario repositorioUsuario;
 
     @Autowired
-    private IUtilidadServicioJWT UtilidadServicioJWT;
+    private IUtilidadServicioJWT utilidadServicioJWT;
 
     @Autowired
     private ValidacionUsuario validacionUsuario;
@@ -40,7 +40,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             if(verificarContraseña(login.getContrasena(),usuario.get().getContrasena())){
-                jwt.put("jwt",UtilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
+                jwt.put("jwt",utilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
             }
             else{
                 jwt.put("error","Autenticacion fallida");
