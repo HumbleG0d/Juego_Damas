@@ -6,6 +6,7 @@ import "../styles/form.css";
 import { useForm } from "react-hook-form";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
+import senData from "../services/senData";
 
 export default function FormRegister() {
   const {
@@ -13,7 +14,7 @@ export default function FormRegister() {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
   } = useForm({
     defaultValues: {
       username: "",
@@ -24,16 +25,32 @@ export default function FormRegister() {
   });
 
   const navigate = useNavigate();
+  const [username, password, email] = watch([
+    "username",
+    "password",
+    "email",
+  ]);
+  const values = { username, password, email };
+  const data = JSON.stringify(values);
+  console.log(data);
 
-  const onSubmit = handleSubmit((data) => {
-    navigate("/login", {
-      replace: true,
-      state: {
-        logged1: watch("password") === watch("passwordConfirm") ? true : false,
-      },
-    });
+  const onSubmit = async (data) => {
+    try {
+      const result = await senData(data);
+      navigate("/login", {
+        replace: true,
+        state: {
+          logged1:
+            watch("password") === watch("passwordConfirm") ? true : false,
+        },
+      });
+      result? console.log("Usuario registrado") : console.log("Error");
+    } catch (error) {
+      console.error("Error al enviar los datos: ", error);
+    }
+
     reset();
-  });
+  };
 
   return (
     <>
@@ -43,7 +60,7 @@ export default function FormRegister() {
         </Link>
         <p className="title">Register</p>
 
-        <Form onSubmit={onSubmit} className="form">
+        <Form onSubmit={handleSubmit(onSubmit)} className="form">
           <div className="input-group">
             <Campo
               classNameLabel="form_label"
@@ -88,7 +105,7 @@ export default function FormRegister() {
             <Campo
               classNameInput="form_input"
               classNameLabel="form_label-id"
-              htmlFor="correo"
+              htmlFor="email"
               name="Email"
               type="email"
               register={register}
