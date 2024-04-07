@@ -10,17 +10,17 @@ public class ValidacionUsuario {
 
         respuesta.setNumero_errores(0);
 
-        if(usuario.getNombre_usuario() == null || usuario.getNombre_usuario().length() < 3 || usuario.getNombre_usuario().length() > 15){
+        if(usuario.getUsername() == null || usuario.getUsername().length() < 3 || usuario.getUsername().length() > 15){
             respuesta.setNumero_errores(respuesta.getNumero_errores() + 1);
             respuesta.setMensaje("El campo nombre_usuario no puede ser nulo y debe tener entre 3 y 15 caracteres.");
         }
 
-        if(usuario.getCorreo_electronico() == null || !usuario.getCorreo_electronico().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+        if(usuario.getEmail() == null || !usuario.getEmail().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
             respuesta.setNumero_errores(respuesta.getNumero_errores() + 1);
             respuesta.setMensaje("El campo de correo electronico no es valido");
         }
 
-        if(usuario.getContrasena() == null || !usuario.getContrasena().matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$")){
+        if(usuario.getPassword() == null || !usuario.getPassword().matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$")){
             respuesta.setNumero_errores(respuesta.getNumero_errores() + 1);
             respuesta.setMensaje("La contraseña debe tener entre 8y 16 caracteres, al menos un numero, una minuscula y una mayuscula");
         }
