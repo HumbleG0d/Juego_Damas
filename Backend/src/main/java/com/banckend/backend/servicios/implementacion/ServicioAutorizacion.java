@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,14 +31,14 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     public HashMap<String, String> acceso(AccesoDatos login) throws Exception {
         try {
             HashMap<String,String> jwt = new HashMap<>();
-            Optional<EntidadUsuario> usuario = repositorioUsuario.findByEmail(login.getCorreo_electronico());
+            Optional<EntidadUsuario> usuario = repositorioUsuario.findByEmail(login.getEmail());
 
             if(usuario.isEmpty()){
                 jwt.put("error","Usuario no registrado");
                 return jwt;
             }
 
-            if(verificarContraseña(login.getContrasena(),usuario.get().getContrasena())){
+            if(verificarContraseña(login.getPassword(),usuario.get().getPassword())){
                 jwt.put("jwt",utilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
             }
             else{
@@ -61,7 +60,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
                 return respuesta;
             }
 
-            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getCorreo_electronico());
+            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getEmail());
             
             if(getAllUsers.isPresent()){
                 respuesta.setNumero_errores(1);
@@ -70,7 +69,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);
-            usuario.setContraseña(codificar.encode(usuario.getContrasena()));
+            usuario.setPassword(codificar.encode(usuario.getPassword()));
             repositorioUsuario.save(usuario);
             respuesta.setMensaje("Usuario creado satisfactoriamente");
 
