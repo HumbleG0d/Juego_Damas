@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class EntidadUsuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Para que JPA genere automaticamente el ID
     @Column(name = "id_usuario")
     private Long id_usuario;
 
@@ -17,7 +17,7 @@ public class EntidadUsuario {
     @Column(name = "correo_electronico")
     private String correo_electronico;
 
-    @Column(name = "contraseña")
+    @Column(name = "contrasena")
     private String contrasena;
 
     public Long getId_usuario() {

@@ -22,7 +22,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     private RepositorioUsuario repositorioUsuario;
 
     @Autowired
-    private IUtilidadServicioJWT UtilidadServicioJWT;
+    private IUtilidadServicioJWT utilidadServicioJWT;
 
     @Autowired
     private ValidacionUsuario validacionUsuario;
@@ -40,7 +40,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             if(verificarContraseña(login.getContrasena(),usuario.get().getContrasena())){
-                jwt.put("jwt",UtilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
+                jwt.put("jwt",utilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
             }
             else{
                 jwt.put("error","Autenticacion fallida");
@@ -61,14 +61,12 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
                 return respuesta;
             }
 
-            List<EntidadUsuario> getAllUsers = repositorioUsuario.findAll();
-
-            for(EntidadUsuario users : getAllUsers){
-                if(users != null){
-                    respuesta.setNumero_errores(1);
-                    respuesta.setMensaje("El usuario existe");
-                    return respuesta;
-                }
+            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getCorreo_electronico());
+            
+            if(getAllUsers.isPresent()){
+                respuesta.setNumero_errores(1);
+                respuesta.setMensaje("El usuario ya existe");
+                return respuesta;
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);

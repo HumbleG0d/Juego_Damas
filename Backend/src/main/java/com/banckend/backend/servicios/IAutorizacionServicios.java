@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public interface IAutorizacionServicios {
 
-    public HashMap<String,String> acceso(AccesoDatos login) throws Exception;
+    public HashMap<String, String> acceso(AccesoDatos login) throws Exception;
 
     public RespuestaDatos registro(EntidadUsuario usuario) throws Exception;
 }
