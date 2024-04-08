@@ -1,5 +1,5 @@
 import "../styles/board.css";
-import crearTablero from "../js/matrizTablero";
+import crearTablero from "../js/matrizBoard";
 import Square from "./Square/Square";
 
 export default function Board() { 
