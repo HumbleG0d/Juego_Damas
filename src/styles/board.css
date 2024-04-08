@@ -1,0 +1,17 @@
+.tablero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.casillero_filas {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.casillero_columnas {
+  width: 95px;
+  height: 80px;
+  border: 2px solid;
+}
