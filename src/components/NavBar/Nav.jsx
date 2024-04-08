@@ -65,7 +65,7 @@ export default function Nav() {
                     fontSize: "20px",
                   }}
                 />
-                <Link to="/instructions">Log out</Link>
+                <Link to="/">Log out</Link>
               </li>
             </ul>
           )}
