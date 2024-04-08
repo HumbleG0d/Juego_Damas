@@ -32,14 +32,14 @@ public class ConfiguracionSeguridad {
                         .anyRequest().authenticated())// Cualquier otro direccion tiene que estar autenticado
                 .sessionManagement(sessionManager -> sessionManager // Para configurar el comportamiento de las sesiones
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))// Para la creacion y gurdado se sesiones
-                .addFilterBefore(new FiltrosDeAutorizacionJWT(iutilidadServicioJWT), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new FiltrosDeAutorizacionJWT(iutilidadServicioJWT), UsernamePasswordAuthenticationFilter.class)//Se agrego los filtros de autorizacion
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint((request, response, authException) ->
-                {response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"No autorizado");}))
+                {response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"No autorizado");}))//Para el tipo de autenticacion no autorizada
                 .build();// retorna el SecurityFilterChain
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder(){//Clase para encriptar la contraseña
+        return new BCryptPasswordEncoder();//retorna el algoritmo de encriptacion BCryptPasswordEncoder
     }
 }
