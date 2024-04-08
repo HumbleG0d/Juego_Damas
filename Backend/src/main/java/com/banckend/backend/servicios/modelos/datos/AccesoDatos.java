@@ -2,13 +2,13 @@ package com.banckend.backend.servicios.modelos.datos;
 
 public class AccesoDatos {
 
-    private String email;
+    private String username;
 
     private String password;
 
-    public String getEmail(){ return email;}
+    public String getNombre_usuario(){ return username;}
 
-    public void setEmail(String email){ this.email = email;}
+    public void setNombre_usario(String username){ this.username = username;}
 
     public String getPassword(){ return password;}
 
