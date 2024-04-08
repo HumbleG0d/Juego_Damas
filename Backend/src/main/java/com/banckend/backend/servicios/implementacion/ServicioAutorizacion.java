@@ -32,14 +32,14 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     public HashMap<String, String> acceso(AccesoDatos login) throws Exception {
         try {
             HashMap<String,String> jwt = new HashMap<>();
-            Optional<EntidadUsuario> usuario = repositorioUsuario.findByEmail(login.getCorreo_electronico());
+            Optional<EntidadUsuario> usuario = repositorioUsuario.findByEmail(login.getEmail());
 
             if(usuario.isEmpty()){
                 jwt.put("error","Usuario no registrado");
                 return jwt;
             }
 
-            if(verificarContraseña(login.getContrasena(),usuario.get().getContrasena())){
+            if(verificarContraseña(login.getPassword(),usuario.get().getPassword())){
                 jwt.put("jwt",UtilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
             }
             else{
@@ -72,7 +72,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);
-            usuario.setContrasena(codificar.encode(usuario.getContrasena()));
+            usuario.setPassword(codificar.encode(usuario.getPassword()));
             repositorioUsuario.save(usuario);
             respuesta.setMensaje("Usuario creado satisfactoriamente");
 

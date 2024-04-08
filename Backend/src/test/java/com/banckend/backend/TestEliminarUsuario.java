@@ -25,9 +25,9 @@ class TestEliminarUsuario {
 	@BeforeEach
 	void setup(){
 		usuario = EntidadUsuario.builder()
-				.nombre_usuario("fernando")
-				.correo_electronico("fer123@gmail.com")
-				.contrasena("fer123")
+				.username("fernando")
+				.email("fer123@gmail.com")
+				.password("fer123")
 				.build();
 	}
 

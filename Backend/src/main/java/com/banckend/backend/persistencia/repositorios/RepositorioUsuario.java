@@ -10,5 +10,4 @@ public interface RepositorioUsuario extends JpaRepository<EntidadUsuario,Long> {
 
     @Query(value ="SELECT * FROM usuario WHERE correo_electronico = :correo_electronico", nativeQuery = true)
     Optional<EntidadUsuario> findByEmail(String correo_electronico);
-    
 }

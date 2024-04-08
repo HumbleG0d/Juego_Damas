@@ -26,9 +26,9 @@ class TestListarUsuarios {
     @BeforeEach
 	void setup(){
 		usuario = EntidadUsuario.builder()
-				.nombre_usuario("Gabriel")
-				.correo_electronico("gabriel123@gmail.com")
-				.contrasena("gabriel123")
+				.username("Gabriel")
+				.email("gabriel123@gmail.com")
+				.password("gabriel123")
 				.build();
 	}
 
@@ -37,9 +37,9 @@ class TestListarUsuarios {
 	void testListarUsuarios(){
 		//given 
 		EntidadUsuario usuario1 = EntidadUsuario.builder()
-						.nombre_usuario("Omar")
-						.correo_electronico("omar123@gmail.com")
-						.contrasena("omar123")
+						.username("Omar")
+						.email("omar123@gmail.com")
+						.password("omar123")
 						.build();
 		repositorioUsuario.save(usuario1);
 		repositorioUsuario.save(usuario);

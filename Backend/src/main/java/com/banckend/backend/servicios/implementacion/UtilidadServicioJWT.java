@@ -25,14 +25,14 @@ import java.util.Date;
 @Service
 public class UtilidadServicioJWT implements IUtilidadServicioJWT {
 
-    @Value("classpath:jwtKeys/private_key.pem")
+    @Value("classpath:jwtLlaves/private_key.pem")
     private Resource privateKeyResource;
 
-    @Value("Classpath.jwtKeys/public_key.pem")
+    @Value("Classpath.jwtLlaves/public_key.pem")
     private Resource publicKeyResource;
 
     @Override
-    public String generateJWT(Long id_usuario) throws IOException, NoSuchAlgorithmException, InvalidKeyException, JOSEException, InvalidKeySpecException {
+    public String generateJWT(Long id_usuario) throws IOException, NoSuchAlgorithmException, JOSEException, InvalidKeySpecException {
         PrivateKey privateKey = cargarLlavePrivada(privateKeyResource);
 
         JWSSigner signer = new RSASSASigner(privateKey);
@@ -52,7 +52,7 @@ public class UtilidadServicioJWT implements IUtilidadServicioJWT {
     }
 
     @Override
-    public JWTClaimsSet parseJWT(String jwt) throws IOException, NoSuchAlgorithmException, InvalidKeyException, ParseException, JOSEException, InvalidKeySpecException {
+    public JWTClaimsSet parseJWT(String jwt) throws IOException, NoSuchAlgorithmException, ParseException, JOSEException, InvalidKeySpecException {
         PublicKey publicKey = cargarLlavePublica(publicKeyResource);
         SignedJWT signedJWT = SignedJWT.parse(jwt);
         JWSVerifier verificar = new RSASSAVerifier((RSAPublicKey)publicKey);

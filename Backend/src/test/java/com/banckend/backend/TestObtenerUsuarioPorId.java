@@ -23,9 +23,9 @@ class TestObtenerUsuarioPorId {
     @BeforeEach
 	void setup(){
 		usuario = EntidadUsuario.builder()
-				.nombre_usuario("marco")
-				.correo_electronico("marco123@gmail.com")
-				.contrasena("marco123")
+				.username("marco")
+				.email("marco123@gmail.com")
+				.password("marco123")
 				.build();
 	}
 

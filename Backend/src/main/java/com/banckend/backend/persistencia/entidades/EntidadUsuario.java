@@ -9,26 +9,27 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@Builder // 
-@AllArgsConstructor //
-@NoArgsConstructor //
+@Builder  
+@AllArgsConstructor 
+@NoArgsConstructor 
 @Entity
-@Table(name = "DatosDeUsuario")
+@Table(name = "users")
 public class EntidadUsuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Para que JPA genere automaticamente el ID
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    @Column(name = "nombre_usuario", nullable = false, unique = true)
-    private String nombre_usuario;
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
 
-    @Column(name = "correo_electronico", nullable = false, unique = true)
-    private String correo_electronico;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-    @Column(name = "contraseña", nullable = false)
-    private String contrasena;
+    @Column(name = "password", nullable = false)
+    private String password;
+
 
     public Long getId_usuario() {
         return id_usuario;
@@ -38,28 +39,28 @@ public class EntidadUsuario {
         this.id_usuario = id_usuario;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getCorreo_electronico() {
-        return correo_electronico;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

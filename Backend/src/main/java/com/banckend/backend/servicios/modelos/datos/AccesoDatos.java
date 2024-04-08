@@ -2,15 +2,15 @@ package com.banckend.backend.servicios.modelos.datos;
 
 public class AccesoDatos {
 
-    private String correo_electronico;
+    private String email;
 
-    private String contrasena;
+    private String password;
 
-    public String getCorreo_electronico(){ return correo_electronico;}
+    public String getEmail(){ return email;}
 
-    public void setCorreo_electronico(String correo_electronico){ this.correo_electronico = correo_electronico;}
+    public void setEmail(String email){ this.email = email;}
 
-    public String getContrasena(){ return contrasena;}
+    public String getPassword(){ return password;}
 
-    public void setContrasena(String contrasena){ this.contrasena = contrasena;}
+    public void setPassword(String password){ this.password = password;}
 }

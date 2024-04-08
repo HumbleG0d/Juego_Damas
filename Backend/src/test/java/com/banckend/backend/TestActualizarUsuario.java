@@ -23,9 +23,9 @@ class TestActualizarUsuario {
 	@BeforeEach
 	void setup(){
 		usuario = EntidadUsuario.builder()
-				.nombre_usuario("fernando")
-				.correo_electronico("fer123@gmail.com")
-				.contrasena("fer123")
+				.username("fernando")
+				.email("fer123@gmail.com")
+				.password("fer123")
 				.build();
 	}
 
@@ -36,13 +36,13 @@ class TestActualizarUsuario {
 
         // when(comportamiento que se va a probar)
         EntidadUsuario usuarioGuardado = repositorioUsuario.findById(usuario.getId_usuario()).get();
-        usuarioGuardado.setNombre_usuario("Christian");
-        usuarioGuardado.setCorreo_electronico("cris234@gmail.com");
-        usuarioGuardado.setContrasena("cris234");
+        usuarioGuardado.setUsername("Christian");
+        usuarioGuardado.setEmail("cris234@gmail.com");
+        usuarioGuardado.setPassword("cris234");
         EntidadUsuario usuarioActualizado = repositorioUsuario.save(usuarioGuardado);
 
         // then
-        assertThat(usuarioActualizado.getNombre_usuario()).isEqualTo("Christian ");
-        assertThat(usuarioActualizado.getCorreo_electronico()).isEqualTo("cris234@gmail.com");
+        assertThat(usuarioActualizado.getUsername()).isEqualTo("Christian ");
+        assertThat(usuarioActualizado.getEmail()).isEqualTo("cris234@gmail.com");
     }
 }

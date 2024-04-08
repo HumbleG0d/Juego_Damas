@@ -21,11 +21,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class ConfiguracionSeguridad {
 
     @Autowired
-    IUtilidadServicioJWT iutilidadServicioJWT;
+    private IUtilidadServicioJWT iutilidadServicioJWT;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest -> authRequest // Configuracion de que direccion van a estar protegidas
                         .requestMatchers("/auth/**").permitAll() // Se puede acceder sin ningun tipo de autorizacion a /auth/**
                         .anyRequest().authenticated())// Cualquier otro direccion tiene que estar autenticado

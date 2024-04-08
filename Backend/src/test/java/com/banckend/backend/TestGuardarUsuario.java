@@ -29,9 +29,9 @@ class TestGuardarUsuario {
 		
 		//given - dado o condicion previa o configuracion
 		EntidadUsuario usuario1 = EntidadUsuario.builder()
-						.nombre_usuario("Carlos")
-						.correo_electronico("carlos123@gmail.com")
-						.contrasena("carlos123")
+						.username("Carlos")
+						.email("carlos123@gmail.com")
+						.password("carlos123")
 						.build();
 		//when - accion o el comportamiento que vamos a probar 
 		EntidadUsuario usuarioGuardado = repositorioUsuario.save(usuario1);

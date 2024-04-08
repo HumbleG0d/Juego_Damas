@@ -24,7 +24,7 @@ import java.util.Collections;
 public class FiltrosDeAutorizacionJWT extends OncePerRequestFilter {
 
     @Autowired
-    public IUtilidadServicioJWT iUtilidadServicioJWT;
+    IUtilidadServicioJWT iUtilidadServicioJWT;
 
     public FiltrosDeAutorizacionJWT(IUtilidadServicioJWT iutilidadServicioJWT) {
         this.iUtilidadServicioJWT = iutilidadServicioJWT;

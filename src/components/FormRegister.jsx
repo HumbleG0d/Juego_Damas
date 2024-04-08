@@ -5,7 +5,11 @@ import "../styles/normalize.css";
 import "../styles/form.css";
 import { useForm } from "react-hook-form";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { BsCheckCircle } from "react-icons/bs";
+import { BiErrorCircle } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
+import Card from "./Card/Card";
+import sendData from "../services/sendData";
 
 export default function FormRegister() {
   const {
@@ -13,7 +17,7 @@ export default function FormRegister() {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
   } = useForm({
     defaultValues: {
       username: "",
@@ -24,16 +28,44 @@ export default function FormRegister() {
   });
 
   const navigate = useNavigate();
+  const [username, email, password] = watch(["username", "email", "password"]);
+  const values = { username, email, password };
+  const data = JSON.stringify(values);
+  console.log(data);
 
-  const onSubmit = handleSubmit((data) => {
-    navigate("/login", {
-      replace: true,
-      state: {
-        logged1: watch("password") === watch("passwordConfirm") ? true : false,
-      },
-    });
+  const onSubmit = async (data) => {
+    try {
+      const result = await sendData(data);
+      navigate("/login", {
+        replace: true,
+        state: {
+          logged1:
+            watch("password") === watch("passwordConfirm") ? true : false,
+        },
+      });
+      result ? (
+        <Card
+          title="User created successfully"
+          colorB="#2b641e"
+          colorTitle="#2b641e"
+          bgcolor="#84d65a"
+          children={<BsCheckCircle />}
+        />
+      ) :
+        (<Card
+          title="User not created"
+          colorB="FFFFFF"
+          colorTitle="FFFFFF"
+          bgcolor="#EF665B"
+          children={<BiErrorCircle />}
+        />
+        )
+    } catch (error) {
+      console.error("Error al enviar los datos: ", error);
+    }
+
     reset();
-  });
+  };
 
   return (
     <>
@@ -43,7 +75,7 @@ export default function FormRegister() {
         </Link>
         <p className="title">Register</p>
 
-        <Form onSubmit={onSubmit} className="form">
+        <Form onSubmit={handleSubmit(onSubmit)} className="form">
           <div className="input-group">
             <Campo
               classNameLabel="form_label"
@@ -88,7 +120,7 @@ export default function FormRegister() {
             <Campo
               classNameInput="form_input"
               classNameLabel="form_label-id"
-              htmlFor="correo"
+              htmlFor="email"
               name="Email"
               type="email"
               register={register}

@@ -11,14 +11,14 @@ public class ConfiguracionDeCors implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*") // Aun falta especificar la ruta del frontend, * : acepta todas las rutas
+                .allowedOrigins("http://localhost:5173") // Aun falta especificar la ruta del frontend, * : acepta todas las rutas
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
                 .allowCredentials(true) // se necesitaria credenciales para acceder a las rutas privadas
                 .maxAge(3600);
 
         registry.addMapping("/auth/**")
-                .allowedOrigins("*")
+                .allowedOrigins("http://localhost:5173")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
                 .allowCredentials(false) //No se necesitaria credenciales para acceder a las rutas publicas
