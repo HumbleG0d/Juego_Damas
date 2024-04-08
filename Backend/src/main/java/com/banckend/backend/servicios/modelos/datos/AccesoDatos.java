@@ -6,9 +6,9 @@ public class AccesoDatos {
 
     private String password;
 
-    public String getNombre_usuario(){ return username;}
+    public String getUsername(){ return username;}
 
-    public void setNombre_usario(String username){ this.username = username;}
+    public void setUsername(String username){ this.username = username;}
 
     public String getPassword(){ return password;}
 
