@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
-public interface RepositorioUsuario extends JpaRepository<EntidadUsuario,Long> {
+public interface RepositorioUsuario extends JpaRepository<EntidadUsuario, Long> {
 
-    @Query(value ="SELECT * FROM users WHERE username = :username", nativeQuery = true)
-    Optional<EntidadUsuario> findByUsername(String username);
+    @Query(value = "SELECT * FROM users WHERE username= :username", nativeQuery = true) // Se especifica el @Query con
+                                                                                        // que se hara la busqueda de
+                                                                                        // correo_electronico
+    Optional<EntidadUsuario> findByUsername(String username);// Busqueda de correo electronico
 
 }

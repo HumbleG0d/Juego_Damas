@@ -18,4 +18,5 @@ public class ServicioUsuario implements IServiciosUsuarios {
     public List<EntidadUsuario> findAllUser(){
         return repositorioUsuario.findAll();
     }
+    
 }

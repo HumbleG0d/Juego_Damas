@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     private RepositorioUsuario repositorioUsuario;
 
     @Autowired
-    private IUtilidadServicioJWT utilidadServicioJWT;
+    private IUtilidadServicioJWT UtilidadServicioJWT;
 
     @Autowired
     private ValidacionUsuario validacionUsuario;
@@ -31,7 +32,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     public HashMap<String, String> acceso(AccesoDatos login) throws Exception {
         try {
             HashMap<String,String> jwt = new HashMap<>();
-            Optional<EntidadUsuario> usuario = repositorioUsuario.findByUsername(login.getEmail());
+            Optional<EntidadUsuario> usuario = repositorioUsuario.findByUsername(login.getUsername());
 
             if(usuario.isEmpty()){
                 jwt.put("error","Usuario no registrado");
@@ -39,7 +40,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             if(verificarContraseña(login.getPassword(),usuario.get().getPassword())){
-                jwt.put("jwt",utilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
+                jwt.put("jwt",UtilidadServicioJWT.generateJWT(usuario.get().getId_usuario()));
             }
             else{
                 jwt.put("error","Autenticacion fallida");
@@ -60,12 +61,13 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
                 return respuesta;
             }
 
-            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByUsername(usuario.getEmail());
+            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByUsername(usuario.getUsername());
             
-            if(getAllUsers.isPresent()){
+            if(getAllUsers.isPresent()){//Verificamos si el usuario a registrar ya esta registrado
                 respuesta.setNumero_errores(1);
                 respuesta.setMensaje("El usuario ya existe");
                 return respuesta;
+
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);

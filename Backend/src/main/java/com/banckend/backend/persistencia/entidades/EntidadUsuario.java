@@ -1,7 +1,17 @@
 package com.banckend.backend.persistencia.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder  
+@AllArgsConstructor 
+@NoArgsConstructor 
 @Entity
 @Table(name = "users")
 public class EntidadUsuario {
@@ -11,14 +21,23 @@ public class EntidadUsuario {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    @Column(name = "username")
+    //@NotBlack
+    //@size(min=3 , max=15)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "email")
+    //@Email
+    //@NotBlack
+    //Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    //@NotBlack
+    //@Size(min=8, max=16)
+    //Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$")
+    @Column(name = "password", nullable = false)
     private String password;
+
 
     public Long getId_usuario() {
         return id_usuario;
