@@ -32,7 +32,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
     public HashMap<String, String> acceso(AccesoDatos login) throws Exception {
         try {
             HashMap<String,String> jwt = new HashMap<>();
-            Optional<EntidadUsuario> usuario = repositorioUsuario.findByEmail(login.getEmail());
+            Optional<EntidadUsuario> usuario = repositorioUsuario.findByUsername(login.getNombre_usuario());
 
             if(usuario.isEmpty()){
                 jwt.put("error","Usuario no registrado");
@@ -61,7 +61,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
                 return respuesta;
             }
 
-            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getEmail());
+            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByUsername(usuario.getNombre_usuario());
             
             if(getAllUsers.isPresent()){//Verificamos si el usuario a registrar ya esta registrado
                 respuesta.setNumero_errores(1);
