@@ -49,7 +49,9 @@ class TestListarUsuarios {
 
 		//then
 		assertThat(listaUsuarios).isNotNull();
-		assertThat(listaUsuarios.size()).isEqualTo(5);	
+		assertThat(listaUsuarios.size()).isEqualTo(5);
+		
+		
 
 	}
 }
