@@ -21,12 +21,20 @@ public class EntidadUsuario {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
+    //@NotBlack
+    //@size(min=3 , max=15)
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    //@Email
+    //@NotBlack
+    //Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    //@NotBlack
+    //@Size(min=8, max=16)
+    //Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$")
     @Column(name = "password", nullable = false)
     private String password;
 
