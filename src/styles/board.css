@@ -11,6 +11,9 @@
 }
 
 .casillero_columnas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 95px;
   height: 80px;
   border: 2px solid;
