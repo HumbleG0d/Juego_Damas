@@ -62,7 +62,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
 
             Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getEmail());
             
-            if(getAllUsers.isPresent()){
+            if(getAllUsers.isPresent()){//Verificamos si el usuario a registrar ya esta registrado
                 respuesta.setNumero_errores(1);
                 respuesta.setMensaje("El usuario ya existe");
                 return respuesta;
