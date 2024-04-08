@@ -40,6 +40,8 @@ class TestGuardarUsuario {
 		assertThat(usuarioGuardado).isNotNull();
 		assertThat(usuarioGuardado.getId_usuario()).isGreaterThan(0);
 
+		
+
 	}
  
 }
