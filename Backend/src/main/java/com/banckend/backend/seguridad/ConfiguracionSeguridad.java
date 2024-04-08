@@ -24,7 +24,7 @@ public class ConfiguracionSeguridad {
     private IUtilidadServicioJWT iutilidadServicioJWT;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {//Clase para el comportameinto de acceso a los endpoint
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest -> authRequest // Configuracion de que direccion van a estar protegidas
