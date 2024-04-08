@@ -37,12 +37,12 @@ public class UtilidadServicioJWT implements IUtilidadServicioJWT {
 
         JWSSigner signer = new RSASSASigner(privateKey);
 
-        Date now = new Date();
+        Date now = new Date();// Se crea un objeto tiempoAtual de tipo Date para el monitoreo del JWT
 
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
-                .subject(id_usuario.toString())
-                .issueTime(now)
-                .expirationTime(new Date(now.getTime() + 14400000))
+                .subject(id_usuario.toString())//enviamos el id_usuaario que va generar el token
+                .issueTime(now)//fecha de creacion del token
+                .expirationTime(new Date(now.getTime() + 18000000))// La firma(JWT) expirara en 5 horas desde el momento de la generacion del JWT
                 .build();
 
         SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.RS256),claimsSet);
@@ -54,14 +54,14 @@ public class UtilidadServicioJWT implements IUtilidadServicioJWT {
     @Override
     public JWTClaimsSet parseJWT(String jwt) throws IOException, NoSuchAlgorithmException, ParseException, JOSEException, InvalidKeySpecException {
         PublicKey publicKey = cargarLlavePublica(publicKeyResource);
-        SignedJWT signedJWT = SignedJWT.parse(jwt);
+        SignedJWT signedJWT = SignedJWT.parse(jwt);//Leemos el JWT y lo convertimos a un objeto SignedJWT
         JWSVerifier verificar = new RSASSAVerifier((RSAPublicKey)publicKey);
 
-        if(!signedJWT.verify(verificar)){
+        if(!signedJWT.verify(verificar)){//Verificamos si la firma es valida
             throw new JOSEException("Firma invalida");
         }
 
-        JWTClaimsSet claimsSet = signedJWT.getJWTClaimsSet();
+        JWTClaimsSet claimsSet = signedJWT.getJWTClaimsSet();//Obtenemos los claims
 
         if(claimsSet.getExpirationTime().before(new Date())){
             throw new JOSEException("Firma expirada");
@@ -77,7 +77,7 @@ public class UtilidadServicioJWT implements IUtilidadServicioJWT {
                 .replace("-----END PRIVATE KEY-----","")
                 .replaceAll("\\s","");
 
-        byte[] descodificar = Base64.getDecoder().decode(privateKeyPem);
+        byte[] descodificar = Base64.getDecoder().decode(privateKeyPem);//decodificamos la clave
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
         return keyFactory.generatePrivate(new PKCS8EncodedKeySpec(descodificar));
