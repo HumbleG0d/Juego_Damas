@@ -22,7 +22,7 @@ public class ControlesDeAutorizacion {
     IAutorizacionServicios utorizacionServicios;
 
     @PostMapping("/register")
-    private ResponseEntity<RespuestaDatos> registro(@RequestBody EntidadUsuario usuario) throws Exception {
+    private ResponseEntity<RespuestaDatos> registro(@RequestBody EntidadUsuario usuario) throws Exception {//Registro de un nuevo usuario con los atributos definidos en EntidadUsuario
         return new ResponseEntity<>(utorizacionServicios.registro(usuario), HttpStatus.CREATED);
     }
 
