@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface RepositorioUsuario extends JpaRepository<EntidadUsuario,Long> {
 
-    @Query(value ="SELECT * FROM users WHERE email = :email", nativeQuery = true)
-    Optional<EntidadUsuario> findByEmail(String email);
+    @Query(value ="SELECT * FROM users WHERE username = :username", nativeQuery = true)
+    Optional<EntidadUsuario> findByUsername(String username);
 
 }
