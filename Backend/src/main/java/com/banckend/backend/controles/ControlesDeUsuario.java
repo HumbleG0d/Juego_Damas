@@ -18,8 +18,8 @@ public class ControlesDeUsuario {
     @Autowired
     IServiciosUsuarios servicios;
 
-    @GetMapping("/find-all")
-    private ResponseEntity<List<EntidadUsuario>> getAllUsers(){
+    @GetMapping("/allusers")
+    private ResponseEntity<List<EntidadUsuario>> getAllUsers(){ //Devuelve la lista de usuarios del sistema
         return new ResponseEntity<>(servicios.findAllUser(), HttpStatus.OK);
     }
 }
