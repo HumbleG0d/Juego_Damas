@@ -8,7 +8,8 @@ import { FcGoogle } from "react-icons/fc"
 import { AiFillGithub } from "react-icons/ai"
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link , Outlet , useNavigate } from "react-router-dom"
-
+import logedGame from "../services/logedGame";
+import Card from "./Card/Card"
 export default function FormLogin() {
   const { register, formState: { errors }, watch , reset  , handleSubmit} = useForm({
     defaultValues: {
@@ -16,19 +17,45 @@ export default function FormLogin() {
       password: ""
     }
   })
-
   const navigate = useNavigate();
 
-  const onLogin = handleSubmit(() => {
-    navigate('/play', {
-      replace: true,
-      state: {
-        logged: true,
-        username: watch('username')
-      },
-    })
+  const [username, password] = watch(["username", "password"]);
+  const values = { username, password };
+  const data = JSON.stringify(values)
+  console.log(data)
+
+  const onLogin = async (data) => {
+    try {
+      const result = await logedGame(data);
+      navigate('/play', {
+        replace: true,
+        state: {
+          logged: true,
+          username: watch('username')
+        },
+      });
+      result ? (
+        <Card
+          title="User created successfully"
+          colorB="#2b641e"
+          colorTitle="#2b641e"
+          bgcolor="#84d65a"
+          children={<BsCheckCircle />}
+        />
+      ) :
+        (<Card
+          title="User not created"
+          colorB="FFFFFF"
+          colorTitle="FFFFFF"
+          bgcolor="#EF665B"
+          children={<BiErrorCircle />}
+        />
+        )
+    } catch (error) {
+      console.error("Error al enviar los datos: ", error);
+   }
     reset()
-  }); // Add closing parenthesis here
+  }; // Add closing parenthesis here
 
   return (
     <>
@@ -39,7 +66,7 @@ export default function FormLogin() {
         </Link>
         <p className="title">Login</p>
         
-      <Form onSubmit={onLogin} className="form">
+      <Form onSubmit={handleSubmit(onLogin)} className="form">
         <div className="input-group">
           <Campo
             classNameLabel="form_label"
@@ -49,7 +76,7 @@ export default function FormLogin() {
               type="text"
               register={register}
             />
-            {errors.username && <span className="form_error">{errors.username.message}</span>}
+            {errors.username && <span className="form_error">{errors.email.message}</span>}
 
         </div>
         <div className="input-group">
