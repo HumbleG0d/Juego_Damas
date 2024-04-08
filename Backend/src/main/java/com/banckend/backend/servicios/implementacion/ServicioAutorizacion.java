@@ -61,14 +61,13 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
                 return respuesta;
             }
 
-            List<EntidadUsuario> getAllUsers = repositorioUsuario.findAll();
+            Optional<EntidadUsuario> getAllUsers = repositorioUsuario.findByEmail(usuario.getEmail());
+            
+            if(getAllUsers.isPresent()){//Verificamos si el usuario a registrar ya esta registrado
+                respuesta.setNumero_errores(1);
+                respuesta.setMensaje("El usuario ya existe");
+                return respuesta;
 
-            for(EntidadUsuario users : getAllUsers){
-                if(users != null){
-                    respuesta.setNumero_errores(1);
-                    respuesta.setMensaje("El usuario existe");
-                    return respuesta;
-                }
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);

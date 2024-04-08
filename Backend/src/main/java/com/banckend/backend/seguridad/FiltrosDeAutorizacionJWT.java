@@ -33,20 +33,20 @@ public class FiltrosDeAutorizacionJWT extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String header = request.getHeader("Authorization"); //Se obtiene el JWT a traver del Header
-        if (header == null || !header.startsWith("Bearer ")) {
+        String header = request.getHeader("Authorization"); //Para recuperar el header que diga Authorization
+        if (header == null || !header.startsWith("Bearer ")) {// el header recuperado tiene que iniciar con Bearer
             filterChain.doFilter(request, response); // Hace que se invoque el siguiente filtro de la cadena
             return;
         }
 
-        String token = header.substring(7); // extraemos en bearer del token de los 7 primeros caracteres del header
+        String token = header.substring(7); // extraemos en bearer del token despues de los 7 primeros caracteres de Bearer
 
         try {
             JWTClaimsSet claimsSet = iUtilidadServicioJWT.parseJWT(token);// Se obtiene los claims que son piesas de informacion del token
             UsernamePasswordAuthenticationToken autenticacionToken=
                     new UsernamePasswordAuthenticationToken(claimsSet.getSubject(), null, Collections.emptyList());
 
-            SecurityContextHolder.getContext().setAuthentication(autenticacionToken);
+            SecurityContextHolder.getContext().setAuthentication(autenticacionToken);//Seteamos las especificaciones de autenticationtoken
 
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
