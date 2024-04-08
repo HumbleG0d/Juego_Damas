@@ -1,9 +1,7 @@
-# Mi Aplicación de React
-
+# Juego Damas
 ¡Bienvenido a Mi Aplicación!
 
-## Descripción
-Esta es una aplicación creada con React y Spring Bot.
+![Imagen de la pagina principal](./src/assets/pagina_juego_damas.png)
 
 ## Instalación
 Para ejecutar esta aplicación en tu máquina local, sigue estos pasos:
@@ -15,6 +13,7 @@ Para ejecutar esta aplicación en tu máquina local, sigue estos pasos:
 
 
 ## Estructura del proyecto
+- `Backend/ :` Contiene la logica de creacion de APIs , conección con la base de datos , seguridad de usuario.
 - `public/`: Contiene archivos estáticos y el archivo HTML principal.
 - `src/`: Contiene el código fuente de la aplicación.
   - `components/`: Componentes de React reutilizables.
@@ -37,4 +36,4 @@ Este proyecto está bajo la Licencia [Tipo de licencia]. Para más detalles, ver
 Si tienes alguna pregunta o sugerencia, por favor contáctanos en [correo electrónico] o abre un issue en este repositorio.
 
 ## Diseño
-![Foto de inicion de sesión ](./src/assets/PaginaWeb.png)
+![Imagen de la pagina principal](./src/assets/Juego_Damas.png)
