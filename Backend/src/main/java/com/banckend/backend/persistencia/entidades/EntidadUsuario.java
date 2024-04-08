@@ -1,7 +1,17 @@
 package com.banckend.backend.persistencia.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder // 
+@AllArgsConstructor //
+@NoArgsConstructor //
 @Entity
 @Table(name = "DatosDeUsuario")
 public class EntidadUsuario {
@@ -11,13 +21,13 @@ public class EntidadUsuario {
     @Column(name = "id_usuario")
     private Long id_usuario;
 
-    @Column(name = "nombre_usuario")
+    @Column(name = "nombre_usuario", nullable = false, unique = true)
     private String nombre_usuario;
 
-    @Column(name = "correo_electronico")
+    @Column(name = "correo_electronico", nullable = false, unique = true)
     private String correo_electronico;
 
-    @Column(name = "contraseña")
+    @Column(name = "contraseña", nullable = false)
     private String contrasena;
 
     public Long getId_usuario() {
@@ -48,7 +58,7 @@ public class EntidadUsuario {
         return contrasena;
     }
 
-    public void setContraseña(String contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 }

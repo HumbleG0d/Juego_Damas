@@ -72,7 +72,7 @@ public class ServicioAutorizacion implements IAutorizacionServicios {
             }
 
             BCryptPasswordEncoder codificar = new BCryptPasswordEncoder(12);
-            usuario.setContraseña(codificar.encode(usuario.getContrasena()));
+            usuario.setContrasena(codificar.encode(usuario.getContrasena()));
             repositorioUsuario.save(usuario);
             respuesta.setMensaje("Usuario creado satisfactoriamente");
 
