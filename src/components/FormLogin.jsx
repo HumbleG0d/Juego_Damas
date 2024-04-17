@@ -9,9 +9,6 @@ import { AiFillGithub } from "react-icons/ai"
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link , Outlet , useNavigate } from "react-router-dom"
 import logedGame from "../services/logedGame";
-import Card from "./Card/Card"
-import { BsCheckCircle } from "react-icons/bs";
-import { BiErrorCircle } from "react-icons/bi";
 export default function FormLogin() {
   const { register, formState: { errors }, watch , reset  , handleSubmit} = useForm({
     defaultValues: {

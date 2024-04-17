@@ -5,10 +5,7 @@ import "../styles/normalize.css";
 import "../styles/form.css";
 import { useForm } from "react-hook-form";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { BsCheckCircle } from "react-icons/bs";
-import { BiErrorCircle } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
-import Card from "./Card/Card";
 import sendData from "../services/sendData";
 
 export default function FormRegister() {
