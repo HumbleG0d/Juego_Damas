@@ -10,8 +10,9 @@ const sendData = async (data) => {
         },
       }
     );
-
-    return response.data;
+    if (response.status === 200) {
+      alert("Usuario logeado correctamente");
+    }
   } catch (error) {
     console.error("Error al enviar los dotas: ", error);
     throw error;
