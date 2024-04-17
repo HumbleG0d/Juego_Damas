@@ -28,10 +28,6 @@ export default function FormRegister() {
   });
 
   const navigate = useNavigate();
-  const [username, email, password] = watch(["username", "email", "password"]);
-  const values = { username, email, password };
-  const data = JSON.stringify(values);
-  console.log(data);
 
   const onSubmit = async (data) => {
     try {
@@ -43,23 +39,6 @@ export default function FormRegister() {
             watch("password") === watch("passwordConfirm") ? true : false,
         },
       });
-      result ? (
-        <Card
-          title="User created successfully"
-          colorB="#2b641e"
-          colorTitle="#2b641e"
-          bgcolor="#84d65a"
-          children={<BsCheckCircle />}
-        />
-      ) :
-        (<Card
-          title="User not created"
-          colorB="FFFFFF"
-          colorTitle="FFFFFF"
-          bgcolor="#EF665B"
-          children={<BiErrorCircle />}
-        />
-        )
     } catch (error) {
       console.error("Error al enviar los datos: ", error);
     }
