@@ -21,14 +21,10 @@ export default function FormLogin() {
   })
   const navigate = useNavigate();
 
-  const [username, password] = watch(["username", "password"]);
-  const values = { username, password };
-  const data = JSON.stringify(values)
-  console.log(data)
 
   const onLogin = async (data) => {
     try {
-      const result = await logedGame(data);
+      await logedGame(data);
       navigate('/play', {
         replace: true,
         state: {
@@ -36,23 +32,7 @@ export default function FormLogin() {
           username: watch('username')
         },
       });
-      result ? (
-        <Card
-          title="User created successfully"
-          colorB="#2b641e"
-          colorTitle="#2b641e"
-          bgcolor="#84d65a"
-          children={<BsCheckCircle />}
-        />
-      ) :
-        (<Card
-          title="User not created"
-          colorB="FFFFFF"
-          colorTitle="FFFFFF"
-          bgcolor="#EF665B"
-          children={<BiErrorCircle />}
-        />
-        )
+     
     } catch (error) {
       console.error("Error al enviar los datos: ", error);
    }
