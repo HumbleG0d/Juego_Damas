@@ -28,7 +28,7 @@ export default function FormRegister() {
 
   const onSubmit = async (data) => {
     try {
-      const result = await sendData(data);
+      await sendData(data);
       navigate("/login", {
         replace: true,
         state: {
